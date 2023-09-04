@@ -43,3 +43,13 @@ def test_instantiate_from_csv():
     Item.instantiate_from_csv('src/items.csv')
     assert len(Item.all) == 5
     assert type(Item.all[0]) is Item
+
+
+def test_str():
+    ex1 = Item("Чайник", 2000, 10)
+    assert str(ex1) == "Чайник"
+
+
+def test_repr():
+    ex2 = Item("Бритва", 1500, 50)
+    assert repr(ex2) == "Item('Бритва', 1500, 50)"
