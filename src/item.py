@@ -67,3 +67,8 @@ class Item:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 Item(row["name"], float(row["price"]), int(row["quantity"]))
+
+    def __add__(self, other):
+        if issubclass(other.__class__, self.__class__):  # проверка на пренадлежность other к классу Item
+            return self.quantity + other.quantity
+        raise ValueError("Нельзя складывать экземпляры не дочерних классов")

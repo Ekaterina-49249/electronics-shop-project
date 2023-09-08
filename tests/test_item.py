@@ -1,7 +1,26 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
-
+from src.phone import Phone
 from src.item import Item
+
+
+@pytest.fixture
+def phone_class_fix():
+    return Phone("Samsung", 50000, 90, 2)
+
+
+@pytest.fixture
+def item_class_fix():
+    return Item("LG", 80000, 10)
+
+
+def test_add_class(item_class_fix, phone_class_fix):
+    """Тест на сложение экземпляров двух классов"""
+    assert item_class_fix + phone_class_fix == 100
+    assert item_class_fix + item_class_fix == 20
+    with pytest.raises(ValueError):
+        assert item_class_fix + 10000 == "Нельзя складывать экземпляры не дочерних классов"
+        assert phone_class_fix + 50 == "Нельзя складывать экземпляры не дочерних классов"
 
 
 @pytest.fixture()
