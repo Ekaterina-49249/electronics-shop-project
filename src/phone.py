@@ -14,17 +14,17 @@ class Phone(Item):
 
     def __repr__(self):
         """Отображение инфо в режиме отладки"""
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.__number_of_sim})"
 
     @property
-    def count_sim(self):
+    def number_of_sim(self):
         """Метод выводит кол-во симкарт"""
-        return self.number_of_sim
+        return self.__number_of_sim
 
-    @count_sim.setter
-    def count_sim(self, figure):
+    @number_of_sim.setter
+    def number_of_sim(self, figure):
         """Запись и проверка кол-ва симкарт"""
         if figure <= 0 or type(figure) != int:
             raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля')
         else:
-            self.number_of_sim = figure
+            self.__number_of_sim = figure

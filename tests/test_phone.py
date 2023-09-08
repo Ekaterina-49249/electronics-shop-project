@@ -15,8 +15,8 @@ def test_numbers_sim(phone_fix):
     assert phone_fix.number_of_sim == 3
 
     with pytest.raises(ValueError):
-        phone_fix.count_sim = 0
-        assert phone_fix.count_sim == 'Количество физических SIM-карт должно быть целым числом больше нуля'
+        phone_fix.number_of_sim = 0
+        assert phone_fix.number_of_sim == 'Количество физических SIM-карт должно быть целым числом больше нуля'
 
 
 def test_repr(phone_fix):
